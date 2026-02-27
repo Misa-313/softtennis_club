@@ -1,4 +1,4 @@
-<img width="1063" height="1108" alt="image" src="https://github.com/user-attachments/assets/c83e66c4-2c93-4b33-8939-2dbd092076c8" /># softtennis_club
+# softtennis_club
 ソフトテニス部の部員、練習メニュー管理、AI相談が可能です。
 
 ##概要
