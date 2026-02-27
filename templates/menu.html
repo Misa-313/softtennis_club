@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>練習メニュー管理</title>
+</head>
+
+<body>
+<h1>練習メニュー管理</h1>
+<p><並び替えボタン></p>
+
+<form action="/menu" method="get">
+    <button type="submit" name="filter" value="allshow">すべて表示</button>
+    <button type="submit" name="filter" value="fw">前衛のみ</button>
+    <button type="submit" name="filter" value="bw">後衛のみ</button>
+    <button type="submit" name="filter" value="all">全員のみ</button>
+</form>
+
+<h2>練習メニュー一覧</h2>
+
+<table border="1">
+    <tr>
+        <th>メニュー名</th>
+        <th>対象ポジション</th>
+        <th>メモ</th>
+        <th>削除</th>
+    </tr>
+
+    {% for menu in menu %}
+    <tr>
+        <td>{{ menu[1] }}</td>
+        <td>{{ menu[2] }}</td>
+        <td>{{ menu[3] if menu[3] else "" }}</td>
+        <td>
+            <a href="/menu/delete/{{ menu[0] }}" onclick="return confirm('削除しますか？')">削除</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>メニュー追加</h2>
+<form action="/menu/add" method="post">
+    メニュー名：<input type="text" name="menu_name" placeholder="ロブシュート" required>
+    対象ポジション：
+    <select name="position">
+        <option value="前衛">前衛</option>
+        <option value="後衛">後衛</option>
+        <option value="全員">全員</option>
+    </select>
+    メモ：<input type="text" name="memo" placeholder="風向き考える">
+    <button type="submit">登録</button>
+</form>
+
+<br>
+<a href="/">トップへ</a>
+
+</body>
+</html>

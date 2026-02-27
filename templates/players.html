@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>メンバー管理</title>
+</head>
+
+<body>
+<h1>メンバー管理</h1>
+<p><並び替えボタン></p>
+
+<form action="/players" method="get">
+  <button type="submit" name="sort" value="normal">通常表示</button>
+  <button type="submit" name="sort" value="fw">前衛→後衛</button>
+  <button type="submit" name="sort" value="bw">後衛→前衛</button>
+</form>
+
+<h2>メンバー一覧</h2>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>名前</th>
+        <th>ポジション</th>
+        <th>削除</th>
+    </tr>
+    {% for player in players %}
+    <tr>
+        <td> {{ player[0] }} </td>
+        <td>{{ player[1] }}</td>
+        <td>{{ player[2] }}</td>
+        <td>
+            <a href = "/players/delete/{{ player[0]}}" onclick = "return confirm('本当に削除しますか？')">削除</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h2>メンバー追加</h2>
+<form action="/players/add" method="post">
+    ID：<input type="text" name="id_pl" placeholder="p0010" required>
+    名前：<input type="text" name="name" placeholder="みさき"required>
+    ポジション：
+    <select name="position">
+        <option value="前衛">前衛</option>
+        <option value="後衛">後衛</option>
+    </select>
+    <button type="submit">登録</button>
+</form>
+
+    <a href="/">トップへ</a>
+</body>
+</html>

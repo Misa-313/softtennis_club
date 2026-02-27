@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI練習メニュー相談</title>
+</head>
+<body>
+<h1>AI練習メニュー相談</h1>
+
+<form action="/ai" method="post">
+    <p>相談内容を入力してください：</p>
+    <textarea name="opinion" rows="5" cols="60" placeholder="例：ボレーボレー　3分×2
+    手出しの一本打ち　15分
+    サーブレシーブ　7分×2
+アップや準備体操は含めず、休憩を含めて4時間になるように、基礎練、前衛練、後衛練を追加して練習メニューを作成してほしい" required></textarea>
+    <br>
+    <button type="submit">AIに相談</button>
+</form>
+
+<hr>
+
+{% if reply %}
+<h2>AIからのアドバイス</h2>
+<pre>{{ reply }}</pre>
+{% endif %}
+
+<a href="/">トップへ</a>
+</body>
+</html>
